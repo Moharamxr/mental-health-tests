@@ -18,6 +18,36 @@ const Home = () => {
       text: "Learn more about mental health conditions, recommended steps towards recovery, and where to find help.",
     },
   };
+  const mentalHealthTopics = [
+    "Abuse",
+    "Addiction",
+    "ADHD",
+    "Anxiety",
+    "Bipolar",
+    "Borderline",
+    "Depression",
+    "Eating Disorder",
+    "Loneliness",
+    "OCD",
+    "Postpartum Depression",
+    "Psychosis",
+    "Relationships",
+    "Self-Harm",
+    "Sleep",
+    "Suicide",
+    "Tardive Dyskinesia",
+    "Trauma & PTSD",
+  ];
+  const phrases = [
+    "Am I depressed or just sad?",
+    "I don’t want to live, but I don’t want to die.",
+    "Need to talk to someone? (Warmlines)",
+    "I hate myself",
+    "Does depression go away on its own?",
+    "I think about death all the time",
+    "Are there types of depression?",
+    "I can’t get over things that happened in the past",
+  ];
 
   const navigate = useNavigate();
 
@@ -30,7 +60,7 @@ const Home = () => {
       {/* Header Section */}
       <header className="bg-blue-100/70 rounded-3xl lg:rounded-ss-none p-8 lg:p-14 mx-auto max-w-7xl">
         <h1 className="text-4xl lg:text-7xl text-blue-800 font-semibold font-sans leading-tight lg:leading-[1.15] mb-5">
-           🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹Marwa🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹
+          MHT Screening
         </h1>
         <p className="text-gray-500 text-xl mb-5">
           Take the first steps to mental health! <br />
@@ -58,8 +88,8 @@ const Home = () => {
                 This test will help you understand more about {item}. Answer the
                 questions honestly for accurate results.
               </p>
-              <span onClick={()=>handleTakeTestBtn(item)}>
-                <PrimaryBtn text="TAKE TEST"  />
+              <span onClick={() => handleTakeTestBtn(item)}>
+                <PrimaryBtn text="TAKE TEST" />
               </span>
             </div>
           ))}
@@ -92,6 +122,55 @@ const Home = () => {
         </div>
       </section>
 
+      <section className="grid grid-cols-12 grid-rows-4 gap-5 p-10">
+        <div className="rounded-3xl rounded-br-none p-8 bg-blue-100 row-start-1 row-end-3 col-start-3 col-end-7">
+          <h2 className="text-3xl text-blue-800 font-bold mb-5">
+            Mental Health Conditions{" "}
+          </h2>
+          <div className="flex flex-wrap gap-3">
+            {mentalHealthTopics.map((topic, index) => (
+              <span
+                key={index}
+                className="text-blue-800 font-semibold hover:underline "
+              >
+                {topic} {index < mentalHealthTopics.length - 1 && " | "}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div className="rounded-3xl rounded-tl-none p-8 bg-blue-800 row-start-2 row-end-5 col-start-7 col-end-11">
+          <h2 className="text-3xl text-white font-bold mb-5">
+            Popular Mental Health Articles{" "}
+          </h2>
+          <div className="grid grid-cols-1 gap-5">
+            {phrases.map((phrase, index) => (
+              <p
+                key={index}
+                className="text-white font-semibold hover:underline"
+              >
+                {phrase}
+              </p>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="container w-4/5 p-10 py-16 bg-red-50 rounded-3xl">
+        <h3 className="text-4xl text-red-800 text-center font-bold pb-10">
+          About Mental Health Tests
+        </h3>
+        <p className="text-red-800 text-lg leading-relaxed px-24">
+          Mental health tests, also known as psychological assessments, are
+          tools used by mental health professionals to evaluate an individual's
+          mental health status and identify potential mental health conditions.
+          These tests can be self-administered or conducted by a clinician and
+          often involve a series of questions or tasks designed to assess
+          various aspects of mental health, including emotional state, cognitive
+          function, and behavioral patterns. Here's an overview of different
+          types of mental health tests and their importance.{" "}
+        </p>
+      </section>
+
       {/* Testimonials Section */}
       <section
         className="bg-blue-50 p-8 lg:p-14 mx-auto rounded-3xl max-w-7xl"
@@ -120,7 +199,7 @@ const Home = () => {
 
       {/* Contact Section */}
       <section
-        className="bg-gray-50 p-8 lg:p-14 mx-auto rounded-3xl max-w-7xl"
+        className="bg-blue-50 p-8 lg:p-14 mx-auto rounded-3xl max-w-7xl"
         id="contact"
       >
         <h2 className="text-3xl text-gray-800 font-bold mb-5">Contact Us</h2>
@@ -166,13 +245,69 @@ const Home = () => {
         <h2 className="text-3xl text-red-800 font-bold mb-5">
           Mental Health Resources
         </h2>
-        <p className="text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-          scelerisque, nisl a volutpat viverra, mi nunc ultrices purus, in
-          pellentesque elit ligula sit amet est. Nullam scelerisque, nisl a
-          volutpat viverra, mi nunc ultrices purus, in pellentesque elit ligula
-          sit amet est.
-        </p>
+       
+        <ul class="space-y-4">
+      <li>
+        <a href="https://www.nami.org" target="_blank" class="text-blue-500 hover:underline">
+          National Alliance on Mental Illness (NAMI)
+        </a>
+        <p>Provides advocacy, education, support, and public awareness for individuals and families affected by mental illness.</p>
+      </li>
+      <li>
+        <a href="https://www.mentalhealth.gov" target="_blank" class="text-blue-500 hover:underline">
+          MentalHealth.gov
+        </a>
+        <p>A comprehensive resource for information about mental health conditions and services available.</p>
+      </li>
+      <li>
+        <a href="https://www.samhsa.gov" target="_blank" class="text-blue-500 hover:underline">
+          Substance Abuse and Mental Health Services Administration (SAMHSA)
+        </a>
+        <p>Advances the behavioral health of the nation through resources and support for mental health and substance use disorders.</p>
+      </li>
+      <li>
+        <a href="https://www.crisistextline.org" target="_blank" class="text-blue-500 hover:underline">
+          Crisis Text Line
+        </a>
+        <p>Provides free, 24/7 support for those in crisis. Text HOME to 741741 to connect with a crisis counselor.</p>
+      </li>
+      <li>
+        <a href="https://suicidepreventionlifeline.org" target="_blank" class="text-blue-500 hover:underline">
+          National Suicide Prevention Lifeline
+        </a>
+        <p>Offers free and confidential support for people in distress, prevention, and crisis resources. Call 1-800-273-8255.</p>
+      </li>
+      <li>
+        <a href="https://www.adaa.org" target="_blank" class="text-blue-500 hover:underline">
+          Anxiety and Depression Association of America (ADAA)
+        </a>
+        <p>Focuses on the prevention, treatment, and cure of anxiety, depression, OCD, PTSD, and co-occurring disorders.</p>
+      </li>
+      <li>
+        <a href="https://www.nimh.nih.gov" target="_blank" class="text-blue-500 hover:underline">
+          National Institute of Mental Health (NIMH)
+        </a>
+        <p>The lead federal agency for research on mental disorders. Provides information on a variety of mental health topics and research.</p>
+      </li>
+      <li>
+        <a href="https://www.betterhelp.com" target="_blank" class="text-blue-500 hover:underline">
+          BetterHelp
+        </a>
+        <p>An online platform providing access to professional counselors and therapists through chat, video, and phone sessions.</p>
+      </li>
+      <li>
+        <a href="https://www.thetrevorproject.org" target="_blank" class="text-blue-500 hover:underline">
+          The Trevor Project
+        </a>
+        <p>Provides crisis intervention and suicide prevention services to LGBTQ youth under 25. Offers 24/7 support via phone, text, and chat.</p>
+      </li>
+      <li>
+        <a href="https://www.mhanational.org" target="_blank" class="text-blue-500 hover:underline">
+          Mental Health America (MHA)
+        </a>
+        <p>Promotes mental health as a critical part of overall wellness. Offers tools and resources to help people understand and address mental health issues.</p>
+      </li>
+    </ul>
       </section>
     </div>
   );

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     setIsLoginOpen(false);
@@ -15,16 +16,16 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center justify-between py-4 px-4 lg:px-8 bg-white shadow-md">
-      <div className="text-3xl lg:text-5xl font-bold text-blue-800">LOGO</div>
-      <ul className="hidden lg:flex justify-center items-center space-x-7 lg:space-x-10">
+      <div onClick={()=>navigate("/")} className="text-3xl lg:text-5xl font-bold text-blue-800 cursor-pointer">LOGO</div>
+      <div className="hidden lg:flex justify-center items-center space-x-7 lg:space-x-10">
         <NavItem text="Learn About Mental Health" link="/" />
-        <NavItem text="Tests" link="#tests" />
-        <NavItem text="Support" link="#support" />
-        <NavItem text="Contact Us" link="#contact" />
-      </ul>
+        <NavItem text="Tests" link="/tests" />
+        <NavItem text="Contact Us" link="/contact" />
+        <NavItem text="Terms&Conditions" link="/terms" />
+      </div>
       <div className="relative hidden lg:block">
         <button
-          onClick={toggleLogin}
+          onClick={()=>navigate("/login")}
           className="lg:block text-lg font-bold text-blue-800 cursor-pointer"
         >
           LOGIN
@@ -63,9 +64,9 @@ const Navbar = () => {
 
 const NavItem = ({ text, link }) => {
   return (
-    <li className="font-bold text-blue-800 cursor-pointer border-b-4 border-transparent hover:border-orange-400 transition-colors ease-in">
-      <a href={link}>{text}</a>
-    </li>
+    <NavLink to={link} className="font-bold text-blue-800 cursor-pointer border-b-4 border-transparent hover:border-orange-400 transition-colors ease-in">
+     {text}
+    </NavLink>
   );
 };
 
