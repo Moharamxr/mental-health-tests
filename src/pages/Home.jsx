@@ -67,7 +67,9 @@ const Home = () => {
           Information, resources, and free & confidential mental health
           screening.
         </p>
-        <PrimaryBtn text="TAKE A MENTAL HEALTH TEST" />
+        <span onClick={() => navigate("/tests")}>
+          <PrimaryBtn text="TAKE A MENTAL HEALTH TEST" />
+        </span>
       </header>
 
       {/* Test Section */}
@@ -245,69 +247,141 @@ const Home = () => {
         <h2 className="text-3xl text-red-800 font-bold mb-5">
           Mental Health Resources
         </h2>
-       
+
         <ul class="space-y-4">
-      <li>
-        <a href="https://www.nami.org" target="_blank" class="text-blue-500 hover:underline">
-          National Alliance on Mental Illness (NAMI)
-        </a>
-        <p>Provides advocacy, education, support, and public awareness for individuals and families affected by mental illness.</p>
-      </li>
-      <li>
-        <a href="https://www.mentalhealth.gov" target="_blank" class="text-blue-500 hover:underline">
-          MentalHealth.gov
-        </a>
-        <p>A comprehensive resource for information about mental health conditions and services available.</p>
-      </li>
-      <li>
-        <a href="https://www.samhsa.gov" target="_blank" class="text-blue-500 hover:underline">
-          Substance Abuse and Mental Health Services Administration (SAMHSA)
-        </a>
-        <p>Advances the behavioral health of the nation through resources and support for mental health and substance use disorders.</p>
-      </li>
-      <li>
-        <a href="https://www.crisistextline.org" target="_blank" class="text-blue-500 hover:underline">
-          Crisis Text Line
-        </a>
-        <p>Provides free, 24/7 support for those in crisis. Text HOME to 741741 to connect with a crisis counselor.</p>
-      </li>
-      <li>
-        <a href="https://suicidepreventionlifeline.org" target="_blank" class="text-blue-500 hover:underline">
-          National Suicide Prevention Lifeline
-        </a>
-        <p>Offers free and confidential support for people in distress, prevention, and crisis resources. Call 1-800-273-8255.</p>
-      </li>
-      <li>
-        <a href="https://www.adaa.org" target="_blank" class="text-blue-500 hover:underline">
-          Anxiety and Depression Association of America (ADAA)
-        </a>
-        <p>Focuses on the prevention, treatment, and cure of anxiety, depression, OCD, PTSD, and co-occurring disorders.</p>
-      </li>
-      <li>
-        <a href="https://www.nimh.nih.gov" target="_blank" class="text-blue-500 hover:underline">
-          National Institute of Mental Health (NIMH)
-        </a>
-        <p>The lead federal agency for research on mental disorders. Provides information on a variety of mental health topics and research.</p>
-      </li>
-      <li>
-        <a href="https://www.betterhelp.com" target="_blank" class="text-blue-500 hover:underline">
-          BetterHelp
-        </a>
-        <p>An online platform providing access to professional counselors and therapists through chat, video, and phone sessions.</p>
-      </li>
-      <li>
-        <a href="https://www.thetrevorproject.org" target="_blank" class="text-blue-500 hover:underline">
-          The Trevor Project
-        </a>
-        <p>Provides crisis intervention and suicide prevention services to LGBTQ youth under 25. Offers 24/7 support via phone, text, and chat.</p>
-      </li>
-      <li>
-        <a href="https://www.mhanational.org" target="_blank" class="text-blue-500 hover:underline">
-          Mental Health America (MHA)
-        </a>
-        <p>Promotes mental health as a critical part of overall wellness. Offers tools and resources to help people understand and address mental health issues.</p>
-      </li>
-    </ul>
+          <li>
+            <a
+              href="https://www.nami.org"
+              target="_blank"
+              class="text-blue-500 hover:underline"
+            >
+              National Alliance on Mental Illness (NAMI)
+            </a>
+            <p>
+              Provides advocacy, education, support, and public awareness for
+              individuals and families affected by mental illness.
+            </p>
+          </li>
+          <li>
+            <a
+              href="https://www.mentalhealth.gov"
+              target="_blank"
+              class="text-blue-500 hover:underline"
+            >
+              MentalHealth.gov
+            </a>
+            <p>
+              A comprehensive resource for information about mental health
+              conditions and services available.
+            </p>
+          </li>
+          <li>
+            <a
+              href="https://www.samhsa.gov"
+              target="_blank"
+              class="text-blue-500 hover:underline"
+            >
+              Substance Abuse and Mental Health Services Administration (SAMHSA)
+            </a>
+            <p>
+              Advances the behavioral health of the nation through resources and
+              support for mental health and substance use disorders.
+            </p>
+          </li>
+          <li>
+            <a
+              href="https://www.crisistextline.org"
+              target="_blank"
+              class="text-blue-500 hover:underline"
+            >
+              Crisis Text Line
+            </a>
+            <p>
+              Provides free, 24/7 support for those in crisis. Text HOME to
+              741741 to connect with a crisis counselor.
+            </p>
+          </li>
+          <li>
+            <a
+              href="https://suicidepreventionlifeline.org"
+              target="_blank"
+              class="text-blue-500 hover:underline"
+            >
+              National Suicide Prevention Lifeline
+            </a>
+            <p>
+              Offers free and confidential support for people in distress,
+              prevention, and crisis resources. Call 1-800-273-8255.
+            </p>
+          </li>
+          <li>
+            <a
+              href="https://www.adaa.org"
+              target="_blank"
+              class="text-blue-500 hover:underline"
+            >
+              Anxiety and Depression Association of America (ADAA)
+            </a>
+            <p>
+              Focuses on the prevention, treatment, and cure of anxiety,
+              depression, OCD, PTSD, and co-occurring disorders.
+            </p>
+          </li>
+          <li>
+            <a
+              href="https://www.nimh.nih.gov"
+              target="_blank"
+              class="text-blue-500 hover:underline"
+            >
+              National Institute of Mental Health (NIMH)
+            </a>
+            <p>
+              The lead federal agency for research on mental disorders. Provides
+              information on a variety of mental health topics and research.
+            </p>
+          </li>
+          <li>
+            <a
+              href="https://www.betterhelp.com"
+              target="_blank"
+              class="text-blue-500 hover:underline"
+            >
+              BetterHelp
+            </a>
+            <p>
+              An online platform providing access to professional counselors and
+              therapists through chat, video, and phone sessions.
+            </p>
+          </li>
+          <li>
+            <a
+              href="https://www.thetrevorproject.org"
+              target="_blank"
+              class="text-blue-500 hover:underline"
+            >
+              The Trevor Project
+            </a>
+            <p>
+              Provides crisis intervention and suicide prevention services to
+              LGBTQ youth under 25. Offers 24/7 support via phone, text, and
+              chat.
+            </p>
+          </li>
+          <li>
+            <a
+              href="https://www.mhanational.org"
+              target="_blank"
+              class="text-blue-500 hover:underline"
+            >
+              Mental Health America (MHA)
+            </a>
+            <p>
+              Promotes mental health as a critical part of overall wellness.
+              Offers tools and resources to help people understand and address
+              mental health issues.
+            </p>
+          </li>
+        </ul>
       </section>
     </div>
   );
