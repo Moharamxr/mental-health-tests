@@ -31,7 +31,7 @@ const Navbar = () => {
         <NavItem text="Contact Us" link="/contact" />
         <NavItem text="About Us" link="/about" />
 
-        <NavItem text="Terms&Conditions" link="/terms" />
+        <NavItem text="Terms & Conditions" link="/terms" />
       </div>
       <div className="relative hidden lg:block">
         <button
@@ -59,13 +59,13 @@ const Navbar = () => {
         </button>
       </div>
       {isMenuOpen && (
-        <div className="absolute top-12 left-0 w-full bg-white shadow-lg lg:hidden">
+        <div className="absolute top-[5.5rem] left-0 w-full bg-white shadow-lg lg:hidden">
           <ul className="flex flex-col items-center space-y-5 py-5 ">
             <NavItem text="Learn About Mental Health" link="/" />
             <NavItem text="Tests" link="/tests" />
             <NavItem text="Contact Us" link="/contact" />
             <NavItem text="About Us" link="/about" />
-            <NavItem text="Terms&Conditions" link="/terms" />
+            <NavItem text="Terms & Conditions" link="/terms" />
             <button
               onClick={() => navigate("/login")}
               className="lg:block text-lg font-bold text-blue-800 cursor-pointer"
