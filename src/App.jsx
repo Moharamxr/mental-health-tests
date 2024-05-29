@@ -10,6 +10,7 @@ import Tests from './components/tests/Tests'
 import TermsAndConditions from './pages/TermsAndConditions'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import ContactUs from './pages/ContactUs'
+import AboutUs from './pages/AboutUs'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
       <Route path="/terms" element={<TermsAndConditions />} />
       <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/contact" element={<ContactUs />} />
+      <Route path="/about" element={<AboutUs />} />
 
     </Routes>
   </Layout>

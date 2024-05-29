@@ -18,6 +18,7 @@ const Home = () => {
       text: "Learn more about mental health conditions, recommended steps towards recovery, and where to find help.",
     },
   };
+
   const mentalHealthTopics = [
     "Abuse",
     "Addiction",
@@ -38,6 +39,7 @@ const Home = () => {
     "Tardive Dyskinesia",
     "Trauma & PTSD",
   ];
+
   const phrases = [
     "Am I depressed or just sad?",
     "I don’t want to live, but I don’t want to die.",
@@ -124,8 +126,9 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="grid grid-cols-12 grid-rows-4 gap-5 p-10">
-        <div className="rounded-3xl rounded-br-none p-8 bg-blue-100 row-start-1 row-end-3 col-start-3 col-end-7">
+      {/* Mental Health Conditions Section */}
+      <section className="grid grid-cols-12 lg:grid-rows-4 gap-5 p-10">
+        <div className="rounded-3xl rounded-br-none p-8 bg-blue-100 lg:row-start-1 row col-span-full lg:row-end-3 lg:col-start-3 lg:col-end-7">
           <h2 className="text-3xl text-blue-800 font-bold mb-5">
             Mental Health Conditions{" "}
           </h2>
@@ -140,7 +143,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <div className="rounded-3xl rounded-tl-none p-8 bg-blue-800 row-start-2 row-end-5 col-start-7 col-end-11">
+        <div className="rounded-3xl rounded-tl-none p-8 bg-blue-800 col-span-full lg:row-start-2 lg:row-end-5 lg:col-start-7 lg:col-end-11">
           <h2 className="text-3xl text-white font-bold mb-5">
             Popular Mental Health Articles{" "}
           </h2>
@@ -157,11 +160,12 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="container w-4/5 p-10 py-16 bg-red-50 rounded-3xl">
+      {/* About Mental Health Tests Section */}
+      <section className="container w-full lg:w-4/5 p-10 py-16 bg-red-50 rounded-3xl mx-auto">
         <h3 className="text-4xl text-red-800 text-center font-bold pb-10">
           About Mental Health Tests
         </h3>
-        <p className="text-red-800 text-lg leading-relaxed px-24">
+        <p className="text-red-800 text-lg leading-relaxed px-5 lg:px-24">
           Mental health tests, also known as psychological assessments, are
           tools used by mental health professionals to evaluate an individual's
           mental health status and identify potential mental health conditions.
@@ -239,6 +243,7 @@ const Home = () => {
           <PrimaryBtn text="SEND MESSAGE" />
         </form>
       </section>
+
       {/* Resources Section */}
       <section
         className="bg-red-50 p-8 lg:p-14 mx-auto rounded-3xl max-w-7xl"
@@ -248,12 +253,12 @@ const Home = () => {
           Mental Health Resources
         </h2>
 
-        <ul class="space-y-4">
+        <ul className="space-y-4">
           <li>
             <a
               href="https://www.nami.org"
               target="_blank"
-              class="text-blue-500 hover:underline"
+              className="text-blue-500 hover:underline"
             >
               National Alliance on Mental Illness (NAMI)
             </a>
@@ -266,7 +271,7 @@ const Home = () => {
             <a
               href="https://www.mentalhealth.gov"
               target="_blank"
-              class="text-blue-500 hover:underline"
+              className="text-blue-500 hover:underline"
             >
               MentalHealth.gov
             </a>
@@ -279,7 +284,7 @@ const Home = () => {
             <a
               href="https://www.samhsa.gov"
               target="_blank"
-              class="text-blue-500 hover:underline"
+              className="text-blue-500 hover:underline"
             >
               Substance Abuse and Mental Health Services Administration (SAMHSA)
             </a>
@@ -292,7 +297,7 @@ const Home = () => {
             <a
               href="https://www.crisistextline.org"
               target="_blank"
-              class="text-blue-500 hover:underline"
+              className="text-blue-500 hover:underline"
             >
               Crisis Text Line
             </a>
@@ -305,7 +310,7 @@ const Home = () => {
             <a
               href="https://suicidepreventionlifeline.org"
               target="_blank"
-              class="text-blue-500 hover:underline"
+              className="text-blue-500 hover:underline"
             >
               National Suicide Prevention Lifeline
             </a>
@@ -318,7 +323,7 @@ const Home = () => {
             <a
               href="https://www.adaa.org"
               target="_blank"
-              class="text-blue-500 hover:underline"
+              className="text-blue-500 hover:underline"
             >
               Anxiety and Depression Association of America (ADAA)
             </a>
@@ -331,7 +336,7 @@ const Home = () => {
             <a
               href="https://www.nimh.nih.gov"
               target="_blank"
-              class="text-blue-500 hover:underline"
+              className="text-blue-500 hover:underline"
             >
               National Institute of Mental Health (NIMH)
             </a>
@@ -344,7 +349,7 @@ const Home = () => {
             <a
               href="https://www.betterhelp.com"
               target="_blank"
-              class="text-blue-500 hover:underline"
+              className="text-blue-500 hover:underline"
             >
               BetterHelp
             </a>
@@ -357,7 +362,7 @@ const Home = () => {
             <a
               href="https://www.thetrevorproject.org"
               target="_blank"
-              class="text-blue-500 hover:underline"
+              className="text-blue-500 hover:underline"
             >
               The Trevor Project
             </a>
@@ -371,7 +376,7 @@ const Home = () => {
             <a
               href="https://www.mhanational.org"
               target="_blank"
-              class="text-blue-500 hover:underline"
+              className="text-blue-500 hover:underline"
             >
               Mental Health America (MHA)
             </a>
