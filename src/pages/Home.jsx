@@ -2,6 +2,7 @@ import React from "react";
 import PrimaryBtn from "../components/Buttons/PrimaryBtn";
 import WaterDrop from "../assets/bubble-red.png";
 import { useNavigate } from "react-router-dom";
+import ContactUs from "./ContactUs";
 
 const Home = () => {
   const supportItems = {
@@ -204,45 +205,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section
-        className="bg-blue-50 p-8 lg:p-14 mx-auto rounded-3xl max-w-7xl"
-        id="contact"
-      >
-        <h2 className="text-3xl text-gray-800 font-bold mb-5">Contact Us</h2>
-        <form className="space-y-5">
-          <div>
-            <label className="block text-gray-600 font-semibold mb-1">
-              Name
-            </label>
-            <input
-              type="text"
-              className="w-full p-3 border border-gray-300 rounded-md"
-              placeholder="Your Name"
-            />
-          </div>
-          <div>
-            <label className="block text-gray-600 font-semibold mb-1">
-              Email
-            </label>
-            <input
-              type="email"
-              className="w-full p-3 border border-gray-300 rounded-md"
-              placeholder="Your Email"
-            />
-          </div>
-          <div>
-            <label className="block text-gray-600 font-semibold mb-1">
-              Message
-            </label>
-            <textarea
-              className="w-full p-3 border border-gray-300 rounded-md"
-              rows="4"
-              placeholder="Your Message"
-            ></textarea>
-          </div>
-          <PrimaryBtn text="SEND MESSAGE" />
-        </form>
-      </section>
+      <ContactUs/>
 
       {/* Resources Section */}
       <section
@@ -372,7 +335,7 @@ const Home = () => {
               chat.
             </p>
           </li>
-          <li>
+          {/* <li>
             <a
               href="https://www.mhanational.org"
               target="_blank"
@@ -385,7 +348,7 @@ const Home = () => {
               Offers tools and resources to help people understand and address
               mental health issues.
             </p>
-          </li>
+          </li> */}
         </ul>
       </section>
     </div>

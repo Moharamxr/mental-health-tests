@@ -1,9 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { login } from "../../services/auth.service";
+import { CircularProgress } from "@mui/material";
+import { IconButton, InputAdornment, TextField } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -13,22 +21,30 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage("");
-
-    // Basic validation
-    if (!email || !password) {
-      setErrorMessage("Please fill in both fields.");
-      return;
-    }
-
-    // Simulate a login API request
-    // Replace this with your actual login logic
-    if (email === "test@example.com" && password === "password") {
-      alert("Login successful!");
-    } else {
-      setErrorMessage("Invalid email or password.");
+    setIsLoading(true);
+    try {
+      await login(email, password);
+      navigate("/");
+    } catch (error) {
+      console.error("Login failed", error);
+      if (error?.response?.status === 404) {
+        setErrorMessage("Invalid email");
+      } else if (error?.response?.status === 401) {
+        setErrorMessage("Invalid password");
+      } else if (error?.response?.status === 500) {
+        setErrorMessage("An error occurred");
+      } else {
+        setErrorMessage(error?.response?.data?.error || "An error occurred");
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -37,70 +53,60 @@ const Login = () => {
       <div className="max-w-lg w-full space-y-8 bg-white p-10 rounded-lg shadow-md">
         <h2 className="text-3xl font-bold text-center text-blue-800">Login</h2>
         {errorMessage && (
-          <p className="text-red-500 text-center mt-4">{errorMessage}</p>
+          <p className="text-red-500 text-center mt-4 font-semibold">
+            {errorMessage}
+          </p>
         )}
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-lg font-medium text-gray-700"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="appearance-none rounded-none relative block w-full px-3 py-4 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-lg"
-                placeholder="Enter your email"
-                value={email}
-                onChange={handleEmailChange}
-                required
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-lg font-medium text-gray-700 mt-4"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                className="appearance-none rounded-none relative block w-full px-3 py-4 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-lg"
-                placeholder="Enter your password"
-                value={password}
-                onChange={handlePasswordChange}
-                required
-              />
-            </div>
+        <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
+          <div>
+            <TextField
+              fullWidth
+              variant="outlined"
+              id="email"
+              name="email"
+              label="Email"
+              type="email"
+              value={email}
+              onChange={handleEmailChange}
+              required
+            />
+          </div>
+          <div>
+            <TextField
+              fullWidth
+              variant="outlined"
+              id="password"
+              name="password"
+              label="Password"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={handlePasswordChange}
+              required
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleTogglePassword}
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
           </div>
 
           <div className="flex items-center justify-between mt-6">
-            <div className="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-              />
-              <label
-                htmlFor="remember-me"
-                className="ml-2 block text-sm text-gray-900"
-              >
-                Remember me
-              </label>
-            </div>
             <div className="text-sm">
-              <a
-                href="#"
-                className="font-medium text-blue-600 hover:text-blue-500"
+              <span
+                onClick={() => {
+                  navigate("/sign-up");
+                }}
+                className="font-medium text-blue-600 hover:text-blue-500 cursor-pointer hover:underline"
               >
-                Forgot your password?
-              </a>
+                Don't have an account? Sign up
+              </span>
             </div>
           </div>
 
@@ -109,7 +115,11 @@ const Login = () => {
               type="submit"
               className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
-              Sign in
+              {isLoading ? (
+                <CircularProgress size={16} color="inherit" />
+              ) : (
+                "Login"
+              )}
             </button>
           </div>
         </form>
