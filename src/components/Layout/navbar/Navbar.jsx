@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex items-center justify-between py-4 px-4 lg:px-8 bg-white shadow-md">
+    <nav className="flex items-center justify-between py-1 px-4 lg:px-8 bg-white shadow-md">
       <div
         onClick={() => navigate("/")}
         className="text-3xl lg:text-4xl font-bold text-blue-800 cursor-pointer center p-0"
