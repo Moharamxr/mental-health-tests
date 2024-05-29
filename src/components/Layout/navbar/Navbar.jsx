@@ -21,8 +21,8 @@ const Navbar = () => {
         onClick={() => navigate("/")}
         className="text-3xl lg:text-5xl font-bold text-blue-800 cursor-pointer"
       >
-        {/* <img src={Logo} className="w-2"  /> */}
-        MHT
+        <img src={Logo} className="w-2"  />
+        {/* MHT */}
       </div>
       
       <div className="hidden lg:flex justify-center items-center space-x-7 lg:space-x-10">
