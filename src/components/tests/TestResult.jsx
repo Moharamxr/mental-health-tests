@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import PrimaryBtn from "../Buttons/PrimaryBtn";
 import { predict } from "../../services/tests.service";
@@ -12,9 +12,12 @@ const TestResult = () => {
 
   const { score, testType, answeredQuestions } = location.state || {};
 
-  if (!score || !testType || !answeredQuestions) {
-    return <Navigate to="/tests" replace />;
-  }
+  console.log(score, testType);
+  useEffect(() => {
+    if (score === null || score < 0 || !testType || !answeredQuestions) {
+      navigate("/tests");
+    }
+  }, [score, testType, answeredQuestions, navigate]);
 
   const scoreArray = [
     "Normal",
@@ -25,7 +28,6 @@ const TestResult = () => {
     "Very Severe",
   ];
 
-  const testTypeArray = ["Depression", "Anxiety", "ADHD"];
 
   const decideScore = (score) => {
     if (score >= 0 && score <= 4) {
@@ -76,17 +78,14 @@ const TestResult = () => {
     setIsPredicting(true);
     try {
       const prediction = await predict(text);
-      setPredictionResult(prediction?.result);
-      if (prediction?.result?.error){
-        setPredictionResult(null);
-      }
+      setPredictionResult(prediction?.result || []);
     } catch (error) {
-
+      console.error("Prediction error:", error);
+      setPredictionResult(null);
     } finally {
       setIsPredicting(false);
     }
   };
-
   return (
     <div className="container w-full md:w-4/5 lg:w-3/5 p-4 sm:p-7 space-y-10 min-h-[70vh]">
       <div className="bg-blue-500 p-6 sm:p-8 rounded-2xl rounded-es-none">
