@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import Logo from "../../../assets/logo2/jpg";
+import Logo from "../../../assets/logo2.jpg";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,9 +19,9 @@ const Navbar = () => {
     <nav className="flex items-center justify-between py-4 px-4 lg:px-8 bg-white shadow-md">
       <div
         onClick={() => navigate("/")}
-        className="text-3xl lg:text-5xl font-bold text-blue-800 cursor-pointer"
+        className="text-3xl lg:text-4xl font-bold text-blue-800 cursor-pointer center p-0"
       >
-        <img src={Logo} className="w-20"  />
+        <img src={Logo} className="w-20 h-20"  /> MHT
         {/* MHT */}
       </div>
       
