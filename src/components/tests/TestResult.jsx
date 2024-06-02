@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import PrimaryBtn from "../Buttons/PrimaryBtn";
 import { predict } from "../../services/tests.service";
 import { CircularProgress } from "@mui/material";

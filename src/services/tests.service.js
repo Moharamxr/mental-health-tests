@@ -22,6 +22,14 @@ const handleResponse = (response) => {
 };
 
 const handleError = (error) => {
+  if (error.status === 401) {
+    console.error("Unauthorized");
+    localStorage.removeItem("token");
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("name");
+    window.location.replace("/login");
+  }
   console.error("Error occurred:", error);
   throw error;
 };
