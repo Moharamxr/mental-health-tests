@@ -22,20 +22,21 @@ const handleResponse = (response) => {
 };
 
 const handleError = (error) => {
-  if (error.status === 401) {
+  if (error.response && error.response.status === 401) {
     console.error("Unauthorized");
     localStorage.removeItem("token");
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userId");
     localStorage.removeItem("name");
-    window.location.replace("/login");
+    window.location.replace("/");
+  } else {
+    console.error("Error occurred:", error);
   }
-  console.error("Error occurred:", error);
   throw error;
 };
 
 export const takeTest = async (newData) => {
-  console.log(newData)
+  console.log(newData);
   try {
     const response = await axiosInstance.post(`${path}/tests`, newData);
     return handleResponse(response);
@@ -54,18 +55,22 @@ export const getTests = async () => {
 };
 
 export const predict = async (newData) => {
-  const response = await axios.post(
-    `${path}/tests/predict`,
-    {
-      text: newData,
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
+  try {
+    const response = await axiosInstance.post(
+      `${path}/tests/predict`,
+      {
+        text: newData,
       },
-    }
-  );
-  console.log("Prediction successful");
-  console.log(response?.data);
-  return response.data;
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log("Prediction successful");
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    handleError(error);
+  }
 };
