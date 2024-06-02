@@ -12,7 +12,6 @@ const TestResult = () => {
 
   const { score, testType, answeredQuestions } = location.state || {};
 
-  console.log(score, testType);
   useEffect(() => {
     if (score === null || score < 0 || !testType || !answeredQuestions) {
       navigate("/tests");
@@ -27,7 +26,6 @@ const TestResult = () => {
     "Severe",
     "Very Severe",
   ];
-
 
   const decideScore = (score) => {
     if (score >= 0 && score <= 4) {
@@ -78,7 +76,12 @@ const TestResult = () => {
     setIsPredicting(true);
     try {
       const prediction = await predict(text);
-      setPredictionResult(prediction?.result || []);
+      if (prediction && Array.isArray(prediction.result)) {
+        setPredictionResult(prediction.result);
+      } else {
+        console.error("Unexpected prediction response:", prediction);
+        setPredictionResult([]);
+      }
     } catch (error) {
       console.error("Prediction error:", error);
       setPredictionResult(null);
@@ -86,6 +89,7 @@ const TestResult = () => {
       setIsPredicting(false);
     }
   };
+
   return (
     <div className="container w-full md:w-4/5 lg:w-3/5 p-4 sm:p-7 space-y-10 min-h-[70vh]">
       <div className="bg-blue-500 p-6 sm:p-8 rounded-2xl rounded-es-none">
@@ -209,16 +213,22 @@ const TestResult = () => {
                 Prediction Result
               </h3>
               <div className="bg-white p-6 rounded-3xl shadow-md">
-                {predictionResult?.map((item, index) => (
-                  <div key={index} className="flex justify-between">
-                    <span className="text-blue-800 font-semibold">
-                      {item.label.charAt(0).toUpperCase() + item.label.slice(1)}
-                    </span>
-                    <span className="text-gray-700">
-                      {item.score.toFixed(2) * 100}%
-                    </span>
-                  </div>
-                ))}
+                {predictionResult.length > 0 ? (
+                  predictionResult.map((item, index) => (
+                    <div key={index} className="flex justify-between">
+                      <span className="text-blue-800 font-semibold">
+                        {item.label.charAt(0).toUpperCase() + item.label.slice(1)}
+                      </span>
+                      <span className="text-gray-700">
+                        {(item.score * 100).toFixed(2)}%
+                      </span>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-gray-700">
+                    No prediction result available.
+                  </p>
+                )}
               </div>
             </div>
           )}
